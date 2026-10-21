@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self'; connect-src https://jrdsoydjcwjbmtasileq.supabase.co; img-src 'self'; form-action 'none'; base-uri 'none'">
+  <title>Fred – godkänn anslutning</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Fred</h1>
+
+    <section data-step="laddar"><p>Laddar …</p></section>
+
+    <section data-step="login" hidden>
+      <p>Logga in för att godkänna anslutningen.</p>
+      <form id="login">
+        <label>E-post <input id="email" type="email" autocomplete="username" required></label>
+        <label>Lösenord <input id="password" type="password" autocomplete="current-password" required></label>
+        <button type="submit">Logga in</button>
+      </form>
+    </section>
+
+    <section data-step="consent" hidden>
+      <p><strong id="client"></strong> vill få åtkomst till Fred som <span id="user"></span>.</p>
+      <dl>
+        <dt>Skickas tillbaka till</dt><dd id="redirect"></dd>
+        <dt>Behörighet</dt><dd id="scope"></dd>
+      </dl>
+      <p id="warn" class="warn" hidden>Varning: anslutningen kommer inte från Claude. Neka om du inte själv har startat den.</p>
+      <div class="actions">
+        <button id="deny" type="button" class="secondary">Neka</button>
+        <button id="approve" type="button">Godkänn</button>
+      </div>
+    </section>
+
+    <section data-step="fel" hidden><p id="feltext"></p></section>
+
+    <p id="msg" role="status"></p>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"
+          integrity="sha384-Rj26LVGvoeRVR6+mwQmFfcR3QOBEwT+ZmuCWpuiqeTzJpCs0ER4ITAWGb4Hiy3Ok"
+          crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+</html>
