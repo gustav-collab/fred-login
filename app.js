@@ -48,7 +48,7 @@ $('#login').addEventListener('submit', async (e) => {
   msg('Loggar in …')
   const { error } = await sb.auth.signInWithPassword({ email: $('#email').value, password: $('#password').value })
   $('#password').value = ''
-  if (error) return msg('Inloggningen misslyckades.')
+  if (error) return msg('Inloggningen misslyckades: ' + error.message)
   msg('')
   details()
 })
